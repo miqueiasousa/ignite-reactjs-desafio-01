@@ -1,0 +1,9 @@
+.header {
+  display: flex;
+  padding: 4.5rem 0 5rem 0;
+  background-color: var(--gray-700);
+}
+
+.logo {
+  margin-inline: auto;
+}
