@@ -1,0 +1,40 @@
+.form {
+  --half-height-text: calc((var(--text-md) * var(--line-height)) / 2);
+  display: flex;
+  gap: 0.5rem;
+  position: absolute;
+  top: calc(0px - 1rem - var(--half-height-text));
+  width: 100%;
+}
+
+.field {
+  flex: 1;
+  background-color: var(--gray-500);
+  padding: 1rem;
+  border-radius: var(--corner);
+  line-height: var(--line-height);
+  border: none;
+  color: var(--gray-100);
+}
+
+.field::placeholder {
+  color: var(--gray-300);
+}
+
+.createButton {
+  border-radius: var(--corner);
+  border: none;
+  padding: 1rem;
+  color: var(--gray-100);
+  background-color: var(--blue-700);
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  font-weight: 700;
+  line-height: var(--line-height);
+  transition: background-color 0.1s;
+}
+
+.createButton:hover {
+  background-color: var(--blue-500);
+}

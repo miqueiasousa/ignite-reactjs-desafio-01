@@ -22,6 +22,14 @@
   --text-md: 1rem;
 
   --line-height: 1.4;
+
+  /* Others */
+  --corner: 8px;
+}
+
+:focus {
+  outline: transparent;
+  box-shadow: 0 0 0 2px var(--purple-700);
 }
 
 * {
