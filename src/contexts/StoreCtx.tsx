@@ -6,13 +6,17 @@ type Action = {
   type: 'add' | 'delete' | 'done'
   payload: ITodo
 }
+
+interface StoreProps {
+  state: ITodo[]
+  dispatch: React.Dispatch<Action>
 }
 
 interface StoreProviderProps {
   children: ReactNode
 }
 
-export const Store = createContext({})
+export const Store = createContext({} as StoreProps)
 
 const reducer = (state: ITodo[], action: Action) => {
   switch (action.type) {
