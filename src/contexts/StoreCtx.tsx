@@ -24,7 +24,7 @@ const reducer = (state: ITodo[], action: Action) => {
       return [...state, action.payload]
 
     case 'delete':
-      return state.filter(todo => (todo.id = action.payload.id))
+      return state.filter(todo => todo.id !== action.payload.id)
 
     case 'done':
       return state.map(todo => {
