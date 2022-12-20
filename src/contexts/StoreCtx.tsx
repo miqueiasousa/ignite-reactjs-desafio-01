@@ -1,10 +1,11 @@
 import { createContext, ReactNode, useReducer, Reducer } from 'react'
 
-import { Todo } from '../types'
+import { ITodo } from '../types'
 
 type Action = {
   type: 'add' | 'delete' | 'done'
-  payload: Todo
+  payload: ITodo
+}
 }
 
 interface StoreProviderProps {
@@ -13,7 +14,7 @@ interface StoreProviderProps {
 
 export const Store = createContext({})
 
-const reducer = (state: Todo[], action: Action) => {
+const reducer = (state: ITodo[], action: Action) => {
   switch (action.type) {
     case 'add':
       return [...state, action.payload]
@@ -35,10 +36,10 @@ const reducer = (state: Todo[], action: Action) => {
   }
 }
 
-const initialState: Todo[] = []
+const initialState: ITodo[] = []
 
 export function StoreProvider({ children }: StoreProviderProps) {
-  const [state, dispatch] = useReducer<Reducer<Todo[], Action>>(
+  const [state, dispatch] = useReducer<Reducer<ITodo[], Action>>(
     reducer,
     initialState
   )
