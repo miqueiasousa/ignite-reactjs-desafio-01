@@ -1,10 +1,6 @@
 import { createContext, ReactNode, useReducer, Reducer } from 'react'
 
-interface Todo {
-  id: string
-  description: string
-  isDone: boolean
-}
+import { Todo } from '../types'
 
 type Action = {
   type: 'add' | 'delete' | 'done'
