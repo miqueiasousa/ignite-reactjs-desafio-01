@@ -41,13 +41,8 @@ const reducer = (state: ITodo[], action: Action) => {
   }
 }
 
-const initialState: ITodo[] = []
-
 export function StoreProvider({ children }: StoreProviderProps) {
-  const [state, dispatch] = useReducer<Reducer<ITodo[], Action>>(
-    reducer,
-    initialState
-  )
+  const [state, dispatch] = useReducer<Reducer<ITodo[], Action>>(reducer, [])
 
   return <Store.Provider value={{ state, dispatch }}>{children}</Store.Provider>
 }
