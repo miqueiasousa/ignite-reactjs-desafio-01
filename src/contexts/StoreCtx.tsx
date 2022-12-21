@@ -28,11 +28,12 @@ const reducer = (state: ITodo[], action: Action) => {
 
     case 'done':
       return state.map(todo => {
-        if (todo.id === action.payload.id) {
-          todo.isDone = !action.payload.isDone
-        }
+        if (todo.id !== action.payload.id) return todo
 
-        return todo
+        return {
+          ...todo,
+          isDone: !action.payload.isDone
+        }
       })
 
     default:
