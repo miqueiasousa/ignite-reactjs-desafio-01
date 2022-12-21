@@ -1,22 +1,35 @@
+import { useContext } from 'react'
 import { ClipboardText } from 'phosphor-react'
 
+import { Store } from '../../contexts/StoreCtx'
 import { Todo } from '../Todo/Todo'
 
 import styles from './Tasks.module.css'
 
 export function Tasks() {
-  const isEmpty = false
+  const { state } = useContext(Store)
+  const isEmpty = state.length === 0
+  const totalDone = state.filter(todo => todo.isDone).length
+  const sortedTodoByDone = state.sort((a, b) => {
+    if (a.isDone === b.isDone) return 0
+
+    if (!a.isDone) return -1
+
+    return 1
+  })
 
   return (
     <div className={styles.tasks}>
       <div className={styles.info}>
         <div className={`${styles.infoBox} ${styles.created}`}>
           <strong>Tarefas criadas</strong>
-          <span className={styles.counter}>0</span>
+          <span className={styles.counter}>{state.length}</span>
         </div>
         <div className={`${styles.infoBox} ${styles.done}`}>
           <strong>Concluídas</strong>
-          <span className={styles.counter}>0</span>
+          <span className={styles.counter}>
+            {totalDone > 0 ? `${totalDone} de ${state.length}` : totalDone}
+          </span>
         </div>
       </div>
       {isEmpty ? (
@@ -29,10 +42,9 @@ export function Tasks() {
         </div>
       ) : (
         <div className={styles.list}>
-          <Todo />
-          <Todo />
-          <Todo />
-          <Todo />
+          {sortedTodoByDone.map(({ id, description, isDone }) => (
+            <Todo key={id} id={id} description={description} isDone={isDone} />
+          ))}
         </div>
       )}
     </div>
