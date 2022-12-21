@@ -13,7 +13,7 @@ export function Form() {
       />
       <button className={styles.createButton} type="submit">
         <span>Criar</span>
-        <PlusCircle size={16} />
+        <PlusCircle size={20} />
       </button>
     </form>
   )

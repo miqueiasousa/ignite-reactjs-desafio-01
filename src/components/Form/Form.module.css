@@ -33,6 +33,7 @@
   font-weight: 700;
   line-height: var(--line-height);
   transition: background-color 0.1s;
+  font-size: var(--text-sm);
 }
 
 .createButton:hover {
