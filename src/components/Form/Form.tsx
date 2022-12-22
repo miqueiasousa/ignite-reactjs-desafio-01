@@ -12,6 +12,7 @@ function uniqueId() {
 export function Form() {
   const [description, setDescription] = useState('')
   const { dispatch } = useContext(Store)
+  const isDescriptionEmpty = description === ''
 
   function handleDescriptionChange(event: ChangeEvent<HTMLInputElement>) {
     setDescription(event.target.value)
@@ -19,10 +20,6 @@ export function Form() {
 
   function handleCreate(event: FormEvent) {
     event.preventDefault()
-
-    if (description === '') {
-      return
-    }
 
     dispatch({
       type: 'add',
@@ -45,7 +42,11 @@ export function Form() {
         value={description}
         onChange={handleDescriptionChange}
       />
-      <button className={styles.createButton} type="submit">
+      <button
+        className={styles.createButton}
+        type="submit"
+        disabled={isDescriptionEmpty}
+      >
         <span>Criar</span>
         <PlusCircle size={20} />
       </button>
