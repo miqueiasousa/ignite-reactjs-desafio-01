@@ -20,6 +20,10 @@ export function Form() {
   function handleCreate(event: FormEvent) {
     event.preventDefault()
 
+    if (description === '') {
+      return
+    }
+
     dispatch({
       type: 'add',
       payload: {
