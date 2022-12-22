@@ -10,13 +10,6 @@ export function Tasks() {
   const { state } = useContext(Store)
   const isEmpty = state.length === 0
   const totalDone = state.filter(todo => todo.isDone).length
-  const sortedTodoByDone = state.sort((a, b) => {
-    if (a.isDone === b.isDone) return 0
-
-    if (!a.isDone) return -1
-
-    return 1
-  })
 
   return (
     <div className={styles.tasks}>
@@ -42,7 +35,7 @@ export function Tasks() {
         </div>
       ) : (
         <div className={styles.list}>
-          {sortedTodoByDone.map(({ id, description, isDone }) => (
+          {state.map(({ id, description, isDone }) => (
             <Todo key={id} id={id} description={description} isDone={isDone} />
           ))}
         </div>
